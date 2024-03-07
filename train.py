@@ -44,9 +44,9 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 full_train_dataset = MNISTRowColDataset('./final_Data/mnist_non_zero_train.npz', device)
 test_dataset = MNISTRowColDataset('./final_Data/mnist_non_zero_test.npz', device)
 
-train_size = int(0.8 * len(full_train_dataset))
-validation_size = len(full_train_dataset) - train_size
-train_dataset, validation_dataset = random_split(full_train_dataset, [train_size, validation_size])
+trainSize = int(0.8 * len(full_train_dataset))
+validationSize = len(full_train_dataset) - trainSize
+train_dataset, validation_dataset = random_split(full_train_dataset, [trainSize, validationSize])
 
 train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
 validation_loader = DataLoader(validation_dataset, batch_size=1000, shuffle=False)
