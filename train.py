@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torchvision import datasets, transforms
 import numpy as np
 from utils import use_foot_gun
 from torch.utils.data import DataLoader, Dataset, random_split
@@ -58,7 +57,7 @@ criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.5)
 
 for epoch in range(1, 6):
-    print(f"Epoch {epoch}")
+    print("Epoch " + str(epoch) + ":")
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
@@ -68,8 +67,8 @@ for epoch in range(1, 6):
         loss.backward()
         optimizer.step()
         if batch_idx % 10 == 0:
-            print(f"Train Epoch: {epoch} [{batch_idx * len(data)}/{len(train_loader.dataset)} ({100. * batch_idx / len(train_loader):.0f}%)]\tLoss: {loss.item():.6f}")
-    print("Validation:")
+            print("Train Epoch: " + str(epoch) + "[" + str(batch_idx * len(data)) + "/" + str(len(train_loader.dataset)) + "(" + str(100. * batch_idx / len(train_loader)) + "%)]\tLoss: " + str(loss.item()))
+    print("Validation " + str(epoch) + ":")
     model.eval()
     evaluation_loss = 0
     correct = 0
