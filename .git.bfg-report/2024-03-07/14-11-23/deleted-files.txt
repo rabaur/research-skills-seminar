@@ -1,0 +1,1 @@
+37fa21c5926c057260e5a2499f64f9beea50f5ed 439111042 mnist_binary.npz
